@@ -16,52 +16,48 @@ class GildedRose {
         Stream.of(items)
                 .forEach(item -> {
 
-                    if (!item.name.equals(SpecialItem.AGED_BRIE.getName())
-                            && !item.name.equals(SpecialItem.TAFKAL80ETC_BACKSTAGE.getName())) {
-                        if (item.quality > 0) {
-                            if (!item.name.equals(SpecialItem.SULFURAS.getName())) {
-                                item.quality--;
-                            }
-                        }
+                    // When i'm not special and my quality > 0 -> Rule
+                    if (!SpecialItem.exist(item.getName()) && item.getQuality() > 0) {
+                        item.decreaseQuality();
                     } else {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
+                        if (item.getQuality() < 50) {
+                            item.increaseQuality();
 
-                            if (item.name.equals(SpecialItem.TAFKAL80ETC_BACKSTAGE.getName())) {
-                                if (item.sellIn < 11) {
-                                    if (item.quality < 50) {
-                                        item.quality++;
+                            //Backstage rule -> extract?
+                            if (item.getName().equals(SpecialItem.TAFKAL80ETC_BACKSTAGE.getName())) {
+                                if (item.getSellIn() < 11) {
+                                    if (item.getQuality() < 50) {
+                                        item.increaseQuality();
                                     }
                                 }
 
-                                if (item.sellIn < 6) {
-                                    if (item.quality < 50) {
-                                        item.quality++;
+                                if (item.getSellIn() < 6) {
+                                    if (item.getQuality() < 50) {
+                                        item.increaseQuality();
                                     }
                                 }
                             }
                         }
                     }
 
-                    if (!item.name.equals(SpecialItem.SULFURAS.getName())) {
-                        item.sellIn--;
+                    // When i'm not sulfuras-> sellIn-- -> Rule (extract?)
+                    if (!item.getName().equals(SpecialItem.SULFURAS.getName())) {
+                        item.decreaseSellIn();
                     }
 
-                    if (item.sellIn < 0) {
-                        if (!item.name.equals(SpecialItem.AGED_BRIE.getName())) {
-                            if (!item.name.equals(SpecialItem.TAFKAL80ETC_BACKSTAGE.getName())) {
-                                if (item.quality > 0) {
-                                    if (!item.name.equals(SpecialItem.SULFURAS.getName())) {
-                                        item.quality--;
-                                    }
-                                }
-                            } else {
-                                item.quality = 0;
-                            }
-                        } else {
-                            if (item.quality < 50) {
-                                item.quality++;
-                            }
+                    if (item.getSellIn() < 0) {
+
+                        if (item.getName().equals(SpecialItem.AGED_BRIE.getName()) && item.getQuality() < 50) {
+                            item.increaseQuality();
+                        }
+
+                        if (item.getName().equals(SpecialItem.TAFKAL80ETC_BACKSTAGE.getName())) {
+                            item.setQuality(0);
+                        }
+
+                        // When i'm not special and my quality > 0 -> Rule (same?)
+                        if (!SpecialItem.exist(item.getName()) && item.getQuality() > 0) {
+                            item.decreaseQuality();
                         }
                     }
 

@@ -116,7 +116,7 @@ public class PropertyMatcherTest {
         final int days = 10;
         List<Result> actual = new ArrayList<>(days);
         for (int i = 0; i < days; i++) {
-            actual.add(new Result(app.items[0].sellIn,app.items[0].quality));
+            actual.add(new Result(app.items[0].getSellIn(),app.items[0].getQuality()));
             app.updateQuality();
         }
         return actual;
