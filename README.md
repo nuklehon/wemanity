@@ -21,3 +21,7 @@ We cover 100% of the existing class GildedRose and we extract a bunch of test ca
 ### Refactoring of the existing class
 
 Now that we have all our tests, we can modify the class without being afraid of breaking something.
+
+#### After refactoring, some rules show up
+
+Try to implement them in concrete classes and adapt test to run with the new logic.

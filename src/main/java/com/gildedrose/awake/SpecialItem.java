@@ -24,8 +24,4 @@ public enum SpecialItem {
         return Stream.of(SpecialItem.values()).filter(item -> name.equals(item.getName())).findAny();
     }
 
-    public static boolean exist(final String name) {
-        return fromName(name).isPresent();
-    }
-
 }

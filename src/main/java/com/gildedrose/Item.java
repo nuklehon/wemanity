@@ -2,9 +2,9 @@ package com.gildedrose;
 
 public class Item {
 
-    private String name;
-    private Integer sellIn;
-    private Integer quality;
+    protected String name;
+    protected Integer sellIn;
+    protected Integer quality;
 
     public Item(final String name, final int sellIn, final int quality) {
         this.name = name;

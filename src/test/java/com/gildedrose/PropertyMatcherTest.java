@@ -113,10 +113,18 @@ public class PropertyMatcherTest {
         final Item[] items = new Item[] {  item };
         final GildedRose app = new GildedRose(items);
 
+//        final int days = 10;
+//        List<Result> actual = new ArrayList<>(days);
+//        for (int i = 0; i < days; i++) {
+//            actual.add(new Result(app.items[0].getSellIn(),app.items[0].getQuality()));
+//            app.updateQuality();
+//        }
+//        return actual;
+
         final int days = 10;
         List<Result> actual = new ArrayList<>(days);
         for (int i = 0; i < days; i++) {
-            actual.add(new Result(app.items[0].getSellIn(),app.items[0].getQuality()));
+            actual.add(new Result(app.updatableItems.get(0).getSellIn(), app.updatableItems.get(0).getQuality()));
             app.updateQuality();
         }
         return actual;
