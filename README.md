@@ -12,3 +12,12 @@ There are several special items:
 - Backstage passes to a TAFKAL80ETC concert
 
 Only these seems to have specific "update rules". We should have test cases for them + one for the default behavior.
+
+#### Result
+
+We cover 100% of the existing class GildedRose and we extract a bunch of test cases. See *test/resources/item-properties*.
+>> Don't know yet what to do with Conjured items.
+
+### Refactoring of the existing class
+
+Now that we have all our tests, we can modify the class without being afraid of breaking something.
