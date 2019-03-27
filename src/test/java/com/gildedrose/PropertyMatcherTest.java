@@ -78,6 +78,13 @@ public class PropertyMatcherTest {
         Assert.assertEquals(expected, legacyResult(item));
     }
 
+    @Test
+    public void conjured2() throws Exception {
+        final List<Result> expected = loadResult("conjured-2");
+        final Item item = new Item("Conjured *", 1, 7);
+        Assert.assertEquals(expected, legacyResult(item));
+    }
+
     // -- TOOLS
 
     private static final File RESOURCE_FOLDER = Paths.get("target/test-classes", "item-properties").toFile();
