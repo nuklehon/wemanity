@@ -11,20 +11,14 @@ public class Backstage extends Item implements UpdatableItem {
     @Override
     public void update() {
 
-        if (getQuality() < 50) {
+        increaseQuality();
+
+        if (getSellIn() < 11) {
             increaseQuality();
+        }
 
-            if (getSellIn() < 11) {
-                if (getQuality() < 50) {
-                    increaseQuality();
-                }
-            }
-
-            if (getSellIn() < 6) {
-                if (getQuality() < 50) {
-                    increaseQuality();
-                }
-            }
+        if (getSellIn() < 6) {
+            increaseQuality();
         }
 
         decreaseSellIn();

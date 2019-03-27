@@ -1,6 +1,11 @@
 package com.gildedrose;
 
+import com.gildedrose.awake.UpdatableItem;
+
 public class Item {
+
+    public static final Integer MAX_QUALITY = 50;
+    public static final String CONJURED = "conjured";
 
     protected String name;
     protected Integer sellIn;
@@ -33,15 +38,23 @@ public class Item {
     }
 
     public void decreaseQuality() {
-        this.quality--;
+        if(this.quality > 0) {
+            this.quality--;
+        }
     }
 
     public void increaseQuality() {
-        this.quality++;
+        if(this.quality < Item.MAX_QUALITY) {
+            this.quality++;
+        }
     }
 
     public void decreaseSellIn() {
         this.sellIn--;
+    }
+
+    public boolean isConjured() {
+        return name.toLowerCase().contains(CONJURED);
     }
 
     @Override

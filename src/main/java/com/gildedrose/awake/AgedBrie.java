@@ -10,16 +10,13 @@ public class AgedBrie extends Item implements UpdatableItem {
 
     @Override
     public void update() {
-
-        if (getQuality() < 50) {
-            increaseQuality();
-        }
-
+        increaseQuality();
         decreaseSellIn();
 
-        if (getSellIn() < 0 && getQuality() < 50) {
-            increaseQuality();
+        if(this.sellIn < 0) {
+            this.increaseQuality();
         }
+
     }
 
 }

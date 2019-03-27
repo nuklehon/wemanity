@@ -1,5 +1,7 @@
 package com.gildedrose.awake;
 
+import com.gildedrose.Item;
+
 import java.util.Optional;
 
 public class ItemFactory {
@@ -14,13 +16,18 @@ public class ItemFactory {
                 case AGED_BRIE:
                     return new AgedBrie(name, sellIn, quality);
                 case SULFURAS:
-                    return new Sulfuras(name, sellIn, quality);
+                    return new Sulfuras(name, sellIn); //Always 80
                 case TAFKAL80ETC_BACKSTAGE:
                     return new Backstage(name, sellIn, quality);
             }
         }
 
-        return new DefaultItem(name, sellIn, quality);
+        if(name.toLowerCase().contains(Item.CONJURED)) {
+            return new ConjuredItem(name, sellIn, quality);
+        } else {
+            return new DefaultItem(name, sellIn, quality);
+        }
+
 
     }
 
