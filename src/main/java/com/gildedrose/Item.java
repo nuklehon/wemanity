@@ -29,10 +29,6 @@ public class Item {
         return quality;
     }
 
-    public void setSellIn(Integer sellIn) {
-        this.sellIn = sellIn;
-    }
-
     public void setQuality(Integer quality) {
         this.quality = quality;
     }
@@ -53,12 +49,4 @@ public class Item {
         this.sellIn--;
     }
 
-    public boolean isConjured() {
-        return name.toLowerCase().contains(CONJURED);
-    }
-
-    @Override
-   public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
-    }
 }
